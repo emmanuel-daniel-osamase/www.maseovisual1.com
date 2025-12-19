@@ -4,42 +4,42 @@ const portfolioItemsData = [
     { 
         title: "Dynamic Motion Reel 2024", 
         category: "motion", 
-        image: "./images/motion-01.mp4", 
+        image: "images/motion-01.mp4", 
         type: "video", 
         description: "Showcasing advanced motion graphics techniques and visual effects"
     },
     { 
         title: "Product Launch Animation", 
         category: "motion", 
-        image: "./images/motion-02.mp4", 
+        image: "images/motion-02.mp4", 
         type: "video", 
         description: "Animated explainer video for tech product launch"
     },
     { 
         title: "Brand Identity Motion", 
         category: "motion", 
-        image: "./images/motion-03.mp4", 
+        image: "images/motion-03.mp4", 
         type: "video", 
         description: "Logo animation and brand motion graphics package"
     },
     { 
         title: "Epic Boxing Match Animation", 
         category: "motion", 
-        image: "./images/motion-04.mp4", 
+        image: "images/motion-04.mp4", 
         type: "video", 
         description: "Animated content for epic boxing match"
     },
     { 
         title: "Typography in Motion", 
         category: "motion", 
-        image: "./images/motion-05.mp4", 
+        image: "images/motion-05.mp4", 
         type: "video", 
         description: "Kinetic typography and text animation showcase"
     },
     { 
         title: "Corporate Presentation", 
         category: "motion", 
-        image: "./images/motion-06.mp4", 
+        image: "images/motion-06.mp4", 
         type: "video", 
         description: "Professional motion graphics for corporate presentation"
     },
@@ -48,37 +48,37 @@ const portfolioItemsData = [
     { 
         title: "Retail Promotion Design", 
         category: "promotional-flyer", 
-        image: "./images/promo-01.jpg", 
+        image: "images/promo-01.jpg", 
         description: "Eye-catching promotional flyer for retail sale campaign"
     },
     { 
         title: "Service Launch Campaign", 
         category: "promotional-flyer", 
-        image: "./images/promo-02.jpg", 
+        image: "images/promo-02.jpg", 
         description: "Professional flyer for new service introduction"
     },
     { 
         title: "PROMOTIONAL-FLYER FOR RESTURANT", 
         category: "promotional-flyer", 
-        image: "./images/promo-03.jpg", 
+        image: "images/promo-03.jpg", 
         description: "Motivational flyer design for resturant"
     },
     { 
         title: "PREMIUM POP-UP SHOW", 
         category: "promotional-flyer", 
-        image: "./images/promo-04.jpg", 
+        image: "images/promo-04.jpg", 
         description: "Elegant flyer for premium pop-up show"
     },
     { 
         title: "Business Consultation", 
         category: "promotional-flyer", 
-        image: "./images/promo-05.jpg", 
+        image: "images/promo-05.jpg", 
         description: "Corporate business master-card for vip"
     },
     { 
         title: "Product Sale Campaign", 
         category: "promotional-flyer", 
-        image: "./images/promo-06.jpg", 
+        image: "images/promo-06.jpg", 
         description: "Vibrant promotional design for product sales"
     },
     
@@ -86,37 +86,37 @@ const portfolioItemsData = [
     { 
         title: "Milestone Birthday Celebration", 
         category: "birthday-flyer", 
-        image: "./images/bday-01.jpg", 
+        image: "images/bday-01.jpg", 
         description: "Elegant invitation for  birthday celebration"
     },
     { 
         title: "Adults Party Invitation", 
         category: "birthday-flyer", 
-        image: "./images/bday-02.jpg", 
+        image: "images/bday-02.jpg", 
         description: "Colorful and fun birthday party flyer design"
     },
     { 
         title: "Golden Anniversary Design", 
         category: "birthday-flyer", 
-        image: "./images/bday-03.jpg", 
+        image: "images/bday-03.jpg", 
         description: "Sophisticated 30th birthday invitation design"
     },
     { 
         title: "Neon Birthday Theme", 
         category: "birthday-flyer", 
-        image: "./images/bday-04.jpg", 
+        image: "images/bday-04.jpg", 
         description: "elegant invitation for 60th birthday celebration"
     },
     { 
         title: "Modern Digital Invite", 
         category: "birthday-flyer", 
-        image: "./images/bday-05.jpg", 
+        image: "images/bday-05.jpg", 
         description: "Clean and modern digital birthday invitation"
     },
     { 
         title: "Luxury Birthday Event", 
         category: "birthday-flyer", 
-        image: "./images/bday-06.jpg", 
+        image: "images/bday-06.jpg", 
         description: "Premium design for luxury birthday celebration"
     },
 
@@ -124,37 +124,37 @@ const portfolioItemsData = [
     { 
         title: "Club Night Event", 
         category: "event-flyer", 
-        image: "./images/event-01.jpg", 
+        image: "images/event-01.jpg", 
         description: "invitation for tucute entertainment club night event"
     },
     { 
         title: "Amapiano Event", 
         category: "event-flyer", 
-        image: "./images/event-02.jpg", 
+        image: "images/event-02.jpg", 
         description: "invitation for amapiano rule event"
     },
     { 
         title: "POOL LAUNCH EVENT", 
         category: "event-flyer", 
-        image: "./images/event-03.jpg", 
+        image: "images/event-03.jpg", 
         description: "invitation of 6years aniniversary pool launch"
     },
     { 
         title: "FEST EVENT", 
         category: "event-flyer", 
-        image: "./images/event-04.jpg", 
+        image: "images/event-04.jpg", 
         description: "Informative flyer for fest event"
     },
     { 
         title: "UNLEASHED/BIRTHDAY PARTY", 
         category: "event-flyer", 
-        image: "./images/event-05.jpg", 
+        image: "images/event-05.jpg", 
         description: "invitation for unleashed/birthday party"
     },
     { 
         title: "ART EXHIBITION", 
         category: "event-flyer", 
-        image: "./images/event-06.jpg", 
+        image: "images/event-06.jpg", 
         description: "invitation for creative poster for contemporary art exhibition"
     },
 
@@ -162,37 +162,37 @@ const portfolioItemsData = [
     { 
         title: "Weekend DJ Night", 
         category: "club-flyer", 
-        image: "./images/club-01.jpg", 
+        image: "images/club-01.jpg", 
         description: "Energetic flyer for Friday night club event"
     },
     { 
         title: "VIP Exclusive Night", 
         category: "club-flyer", 
-        image: "./images/club-02.jpg", 
+        image: "images/club-02.jpg", 
         description: "Premium design for exclusive VIP club night"
     },
     { 
         title: "Summer Pool Party", 
         category: "club-flyer", 
-        image: "./images/club-03.jpg", 
+        image: "images/club-03.jpg", 
         description: "Vibrant design for summer pool party event"
     },
     { 
         title: "Retro Theme Night", 
         category: "club-flyer", 
-        image: "./images/club-04.jpg", 
+        image: "images/club-04.jpg", 
         description: "Nostalgic retro-themed club night design"
     },
     { 
         title: "moblizz empire", 
         category: "club-flyer", 
-        image: "./images/club-05.jpg", 
+        image: "images/club-05.jpg", 
         description: "dj performance party"
     },
     { 
         title: "special guest", 
         category: "club-flyer", 
-        image: "./images/club-06.jpg", 
+        image: "images/club-06.jpg", 
         description: "invitation for fun night"
     },
 
@@ -200,37 +200,37 @@ const portfolioItemsData = [
     { 
         title: "Tech Startup Identity", 
         category: "logo", 
-        image: "./images/logo-01.jpg", 
+        image: "images/logo-01.jpg", 
         description: "Minimalist logo design for technology startup"
     },
     { 
         title: "Creative Agency Branding", 
         category: "logo", 
-        image: "./images/logo-02.jpg", 
+        image: "images/logo-02.jpg", 
         description: "Handcrafted logo for creative design agency"
     },
     { 
         title: "Modern Business Logo", 
         category: "logo", 
-        image: "./images/logo-03.jpg", 
+        image: "images/logo-03.jpg", 
         description: "Geometric logo design for contemporary business"
     },
     { 
         title: "Fashion Brand Logo", 
         category: "logo", 
-        image: "./images/logo-04.jpg", 
+        image: "images/logo-04.jpg", 
         description: "Elegant logo design for fashion brand identity"
     },
     { 
         title: "Restaurant Branding", 
         category: "logo", 
-        image: "./images/logo-05.jpg", 
+        image: "images/logo-05.jpg", 
         description: "Appetizing logo design for restaurant business"
     },
     { 
         title: "Healthcare Identity", 
         category: "logo", 
-        image: "./images/logo-06.jpg", 
+        image: "images/logo-06.jpg", 
         description: "Trustworthy logo design for healthcare organization"
     }
 ];
