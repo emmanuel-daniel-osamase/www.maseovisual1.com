@@ -1594,17 +1594,6 @@ a:hover {
         gap: 1.5rem;
     }
     
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-        text-align: center;
-    }
-    
     .design-principles {
         grid-template-columns: 1fr;
     }
@@ -1616,15 +1605,6 @@ a:hover {
     .about-image-frame {
         width: 280px;
         height: 280px;
-    }
-    
-    .form-footer {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-    
-    .submit-btn {
-        width: 100%;
     }
     
     .logo-main {
@@ -1699,10 +1679,6 @@ a:hover {
         font-size: 1.8rem;
     }
     
-    .contact-form {
-        padding: 2rem;
-    }
-    
     .logo-main {
         height: 30px;
     }
@@ -1720,6 +1696,89 @@ a:hover {
     .main-header .container {
         height: 60px;
     }
+}
+
+/* =========================================== */
+/* MOBILE OVERFLOW FIXES */
+/* =========================================== */
+
+@media (max-width: 768px) {
+    /* Fix contact form elements that exceed screen width */
+    .contact-form {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.5rem;
+        margin: 0;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    /* Fix contact info items */
+    .contact-info-item {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    /* Fix form footer on mobile */
+    .form-footer {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .submit-btn {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    /* Fix contact content grid */
+    .contact-content {
+        display: block;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Additional fixes for very small screens */
+    .contact-info-item {
+        padding: 1rem;
+    }
+    
+    .contact-form {
+        padding: 1.25rem;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 12px 14px;
+    }
+    
+    /* Make sure nothing exceeds screen width */
+    .contact-content,
+    .contact-info,
+    .contact-form {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    /* Force all inline elements to wrap */
+    .contact-note {
+        flex-wrap: wrap;
+    }
+}
+
+/* Emergency overflow prevention */
+.contact-section * {
+    max-width: 100%;
+}
+
+.contact-section .container {
+    overflow-x: hidden;
 }
 
 /* =========================================== */
@@ -1870,8 +1929,6 @@ img {
 :root {
     --valid-color: #4361ee;
 }
-
-/* End of CSS file - No errors */
 
 /* =========================================== */
 /* FIX: LIGHT MODE DROPDOWN ARROW */
