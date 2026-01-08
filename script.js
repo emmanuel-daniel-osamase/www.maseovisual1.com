@@ -910,3 +910,267 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(logo, { attributes: true });
     }
 });
+
+// 3D Card Slider - Text on Images, No Typing Animation
+function initialize3DSlider() {
+    console.log('Initializing 3D card slider...');
+    
+    const sliderTrack = document.getElementById('sliderTrack');
+    const indicatorDots = document.querySelector('.indicator-dots');
+    
+    let currentIndex = 0;
+    let isAnimating = false;
+    let autoSlideInterval;
+    
+    // Total number of items
+    const totalItems = portfolioItemsData.length;
+    
+    // Card description texts
+    const cardDescriptions = {
+        'motion': "Smooth motion graphic design, injecting vitality and storytelling into brands.",
+        'promotional-flyer': "Eye-catching promotional visuals, effectively boosting brand visibility and conversion.",
+        'birthday-flyer': "Custom birthday designs, making every celebration moment unique.",
+        'event-flyer': "Professional event visuals, creating anticipation and ensuring participation.",
+        'club-flyer': "Energetic nightlife designs, creating unforgettable party atmospheres.",
+        'logo': "Strategic brand identity, conveying core values and creating lasting impressions."
+    };
+    
+    // Initialize
+    function initSlider() {
+        // Clear and generate cards
+        sliderTrack.innerHTML = '';
+        createCards();
+        
+        // Start auto rotation
+        startAutoSlide();
+        
+        // Bind events
+        bindEvents();
+        
+        console.log(`3D slider loaded, total ${totalItems} items`);
+    }
+    
+    // Create card elements with text overlay
+    function createCards() {
+        // Only create three currently displayed cards: previous, current, next
+        const indices = [
+            (currentIndex - 1 + totalItems) % totalItems, // Previous
+            currentIndex, // Current
+            (currentIndex + 1) % totalItems // Next
+        ];
+        
+        indices.forEach((itemIndex, positionIndex) => {
+            const item = portfolioItemsData[itemIndex];
+            const card = document.createElement('div');
+            
+            // Set card class
+            let cardClass = 'slider-card';
+            if (positionIndex === 0) cardClass += ' prev';
+            if (positionIndex === 1) cardClass += ' active';
+            if (positionIndex === 2) cardClass += ' next';
+            
+            card.className = cardClass;
+            card.dataset.index = itemIndex;
+            card.dataset.position = positionIndex;
+            
+            // Card content WITH TEXT OVERLAY
+            card.innerHTML = `
+                <div class="card-3d-inner">
+                    <div class="card-3d-face card-front">
+                        <div class="card-media">
+                            ${item.type === 'video' 
+                                ? '<video autoplay loop muted playsinline class="card-3d-video"></video>'
+                                : '<img src="" alt="" class="card-3d-img">'}
+                        </div>
+                        <div class="card-overlay">
+                            <span class="card-index">${String(itemIndex + 1).padStart(2, '0')}</span>
+                            <h4 class="card-3d-title">${item.title}</h4>
+                            <p class="card-3d-desc">${cardDescriptions[item.category] || "Professional design work showcasing creativity and attention to detail."}</p>
+                            <span class="card-3d-category">${getCategoryTag(item.category)}</span>
+                        </div>
+                    </div>
+                    <div class="card-3d-face card-back"></div>
+                </div>
+            `;
+            
+            sliderTrack.appendChild(card);
+            
+            // Set media source
+            setTimeout(() => {
+                const media = card.querySelector(item.type === 'video' ? '.card-3d-video' : '.card-3d-img');
+                if (media) {
+                    media.src = item.image;
+                    if (item.type === 'video') media.load();
+                }
+            }, 100);
+        });
+    }
+    
+    // Slide to next (auto only)
+    function slideNext() {
+        if (isAnimating) return;
+        isAnimating = true;
+        
+        // Update index
+        currentIndex = (currentIndex + 1) % totalItems;
+        
+        // Add transition animation
+        const cards = sliderTrack.querySelectorAll('.slider-card');
+        cards.forEach(card => {
+            card.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        });
+        
+        // Reposition cards
+        cards.forEach(card => {
+            const position = parseInt(card.dataset.position);
+            let newPosition = position - 1;
+            if (newPosition < 0) newPosition = 2;
+            
+            card.dataset.position = newPosition;
+            
+            // Update classes
+            card.classList.remove('prev', 'active', 'next');
+            if (newPosition === 0) card.classList.add('prev');
+            if (newPosition === 1) card.classList.add('active');
+            if (newPosition === 2) card.classList.add('next');
+        });
+        
+        // Update indicator dots
+        updateIndicatorDots();
+        
+        // After animation completes
+        setTimeout(() => {
+            isAnimating = false;
+            
+            // Refresh cards with new content
+            refreshCardContent();
+        }, 800);
+    }
+    
+    // Update indicator dots
+    function updateIndicatorDots() {
+        const dots = indicatorDots.querySelectorAll('.dot');
+        const dotCount = dots.length;
+        const activeDot = currentIndex % dotCount;
+        
+        dots.forEach((dot, index) => {
+            dot.classList.remove('active');
+            if (index === activeDot) {
+                dot.classList.add('active');
+            }
+        });
+    }
+    
+    // Refresh card content after slide animation
+    function refreshCardContent() {
+        const cards = sliderTrack.querySelectorAll('.slider-card');
+        
+        cards.forEach(card => {
+            const position = parseInt(card.dataset.position);
+            let itemIndex;
+            
+            // Calculate which project should be in this position
+            if (position === 0) { // Previous position
+                itemIndex = (currentIndex - 1 + totalItems) % totalItems;
+            } else if (position === 1) { // Current position
+                itemIndex = currentIndex;
+            } else if (position === 2) { // Next position
+                itemIndex = (currentIndex + 1) % totalItems;
+            }
+            
+            const item = portfolioItemsData[itemIndex];
+            
+            // Update card index
+            const indexSpan = card.querySelector('.card-index');
+            if (indexSpan) {
+                indexSpan.textContent = String(itemIndex + 1).padStart(2, '0');
+            }
+            
+            // Update the title
+            const titleEl = card.querySelector('.card-3d-title');
+            if (titleEl) {
+                titleEl.textContent = item.title;
+            }
+            
+            // Update the description
+            const descEl = card.querySelector('.card-3d-desc');
+            if (descEl) {
+                descEl.textContent = cardDescriptions[item.category] || "Professional design work showcasing creativity and attention to detail.";
+            }
+            
+            // Update the category tag
+            const categoryEl = card.querySelector('.card-3d-category');
+            if (categoryEl) {
+                categoryEl.textContent = getCategoryTag(item.category);
+            }
+            
+            // Update media
+            const mediaContainer = card.querySelector('.card-media');
+            if (mediaContainer) {
+                // Remove existing media
+                const existingMedia = mediaContainer.querySelector('.card-3d-img, .card-3d-video');
+                if (existingMedia) existingMedia.remove();
+                
+                // Add new media
+                if (item.type === 'video') {
+                    const video = document.createElement('video');
+                    video.className = 'card-3d-video';
+                    video.autoplay = true;
+                    video.loop = true;
+                    video.muted = true;
+                    video.playsInline = true;
+                    video.src = item.image;
+                    mediaContainer.appendChild(video);
+                    video.load();
+                } else {
+                    const img = document.createElement('img');
+                    img.className = 'card-3d-img';
+                    img.src = item.image;
+                    img.alt = item.title;
+                    mediaContainer.appendChild(img);
+                }
+            }
+            
+            // Update dataset index
+            card.dataset.index = itemIndex;
+        });
+    }
+    
+    // Start auto rotation
+    function startAutoSlide() {
+        clearInterval(autoSlideInterval);
+        
+        // Set auto rotation interval (5 seconds)
+        autoSlideInterval = setInterval(() => {
+            slideNext();
+        }, 5000);
+        
+        // Initialize indicator dots
+        updateIndicatorDots();
+    }
+    
+    // Pause auto rotation
+    function pauseAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+    
+    // Bind events (only hover pause)
+    function bindEvents() {
+        // Mouse hover controls (pause on hover)
+        const container = document.querySelector('.slider-3d-container');
+        if (container) {
+            container.addEventListener('mouseenter', pauseAutoSlide);
+            container.addEventListener('mouseleave', startAutoSlide);
+        }
+    }
+    
+    // Wait for page load to initialize
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSlider);
+    } else {
+        setTimeout(initSlider, 1000);
+    }
+}
+
+// Start the 3D slider
+initialize3DSlider();
